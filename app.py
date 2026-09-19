@@ -1044,4 +1044,9 @@ with gr.Blocks(css=CSS, theme=gr.themes.Soft()) as demo:
                         outputs=[aud_activity_img, aud_rank_table, aud_safety_txt]
                     )
 
-demo.launch(debug=True)
+if __name__ == "__main__":
+    demo.launch(
+        server_name=os.getenv("GRADIO_SERVER_NAME", "127.0.0.1"),
+        server_port=int(os.getenv("GRADIO_SERVER_PORT", "7860")),
+        debug=os.getenv("GRADIO_DEBUG", "false").lower() == "true",
+    )
